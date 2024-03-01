@@ -1,0 +1,17 @@
+[package]
+name = "chanem"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "3.1.18", features = ["derive"] }
+env_logger = "0.9.0"
+gilrs = "0.9.0"
+log = "0.4.17"
+tokio = { version = "1.19.2", features = ["full"] }
+log4rs = "1.2.0"
+cgmath = "0.18.0"
+rand_distr = "0.4.3"
+num = "0.4.0"
+rand = "0.8.5"
+channel_models = { path = "../channel_models" }

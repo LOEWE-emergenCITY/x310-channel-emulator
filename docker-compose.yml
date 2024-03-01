@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+    chanem:
+        build: "."
+        container_name: sun_chanem_1
+        environment:
+            - CHANEM_SDR_IP_ADDR=10.193.0.69
+        ports:
+            - "1341:1341/udp"
+#            - "49152:49152/udp"
+        tty: true
+        privileged: true
+        networks:
+            uav-sim_default:
+                ipv4_address: 172.18.0.13
+        volumes:
+            - ./shared:/shared
+networks:
+    uav-sim_default:
+        external: true
