@@ -25,8 +25,8 @@ RUN apt-get -y install -q \
       libdpdk-dev
 
 RUN mkdir -p /usr/local/src
-RUN git clone https://github.com/DanielOtter/uhd.git /usr/local/src/uhd
-RUN cd /usr/local/src/uhd/ && git checkout UHD-4.0-dev
+RUN git clone https://github.com/LOEWE-emergenCITY/uhd.git /usr/local/src/uhd
+RUN cd /usr/local/src/uhd/ && git checkout UHD-4.0-complex-fir-filter
 RUN mkdir -p /usr/local/src/uhd/host/build
 WORKDIR      /usr/local/src/uhd/host/build
 
@@ -37,7 +37,6 @@ RUN          uhd_images_downloader
 WORKDIR      /
 
 RUN mkdir -p /usr/local/bin
-COPY sdr.py /usr/local/bin
 
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
@@ -50,6 +49,7 @@ RUN cargo install --bins --path . --root /usr/local
 
 ENV UHD_IMAGES_DIR /usr/share/uhd/images/
 
+COPY sdr.py /usr/local/bin
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 WORKDIR /usr/local/bin/
 
